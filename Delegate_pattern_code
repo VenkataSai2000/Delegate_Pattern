@@ -1,0 +1,44 @@
+import UIKit
+
+protocol CollegeProto{
+    func GetDept()->String
+    func GetGrade()->Double
+}
+
+class College{
+    var delegate:CollegeProto?
+    func printDept(){
+        if let x=delegate{
+            print(x.GetDept())
+        
+        }
+        else{
+            print("No department details specified!!!")
+        }
+    }
+    func printGrade(){
+        if let y=delegate{
+            print(y.GetGrade())
+        }
+        else{
+            print(6.00)
+        }
+    }
+}
+
+
+class Output:CollegeProto{
+    func GetDept() -> String {
+        return "ECE"
+    }
+    
+    func GetGrade() -> Double {
+        return 8.7955
+    }
+    
+    
+}
+var o1=College()
+o1.delegate=Output()
+o1.printDept()
+o1.printGrade()
